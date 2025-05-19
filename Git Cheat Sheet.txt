@@ -1,0 +1,113 @@
+Basics
+------------------------------------------------------------
+git init                	# Start a new Git repo
+git clone <repo-url>    	# Download repo from GitHub
+
+git status              	# Show current changes & branch
+git add <file>          	# Stage changes
+git add .               	# Stage everything
+git commit -m "Message" 	# Commit staged changes
+git push                	# Push to GitHub
+git pull                	# Pull from GitHub (fetch + merge)
+------------------------------------------------------------
+
+
+
+Branching
+------------------------------------------------------------
+git branch                   		# List local branches
+git branch <Branch Name>       		# Create new branch
+git checkout <Branch Name>      	# Switch to it
+git checkout -b <Branch Name>   	# Create & switch in one step
+git push -u origin <Branch Name> 	# Push branch to GitHub and track
+
+git merge <Branch Name>         	# Merge branch into current one
+git branch -d <Branch Name>     	# Delete local branch
+git push origin --delete <Branch Name>  # Delete remote branch
+------------------------------------------------------------
+
+
+
+ Merging & Conflicts
+------------------------------------------------------------
+git merge <branch>           # Merge into current branch
+	# If conflict:
+	# - Git shows conflicted files
+	# - Manually fix
+git add .
+git commit                   # Finish the merge
+------------------------------------------------------------
+
+
+
+Stashing (Temporary Save)
+------------------------------------------------------------
+git stash                    # Save uncommitted changes
+git stash list               # See saved stashes
+git stash pop                # Apply most recent stash & delete it
+git stash apply              # Apply most recent stash (keep it)
+git stash drop               # Delete most recent stash
+git stash clear		     # Clears all stashes
+stash@{1}		     #How to use other stashes then the newst one
+------------------------------------------------------------
+
+
+
+Fetching vs Pulling
+------------------------------------------------------------
+git fetch                    # Update remote-tracking branches (no file changes)
+git pull                     # Fetch + auto-merge into current branch
+git pull --rebase            # Rebase your changes on top of pulled ones
+
+git log origin/main          # See remote history
+git log main..origin/main    # What you're missing
+git log origin/main..main    # What you've done that GitHub doesn't have
+git diff origin/main	     # Used to compare commits to files and such
+------------------------------------------------------------
+
+
+
+Files and Reverting
+------------------------------------------------------------
+git restore <file>           	# Undo local (unstaged) changes to a file
+git restore --staged <file> 	# Unstage a file
+------------------------------------------------------------
+
+
+
+Undoing Commits (Carefully)
+------------------------------------------------------------
+git reset --soft HEAD~1      # Undo commit, keep changes staged
+git reset --mixed HEAD~1     # Undo commit, keep changes unstaged
+git reset --hard HEAD~1      # Undo commit AND file changes (⚠️ DANGER)
+git reflog                   # View recent HEAD history (to recover lost commits)
+------------------------------------------------------------
+
+
+
+Viewing History
+------------------------------------------------------------
+git log                      		# Full commit history
+git log --oneline            		# Short view
+git log --graph --oneline --all  	# Visual tree of all branches
+------------------------------------------------------------
+
+
+
+Other Useful Commands
+------------------------------------------------------------
+git commit --amend           # Edit last commit (message or files)
+git cherry-pick <hash>       # Copy a specific commit onto current branch
+git tag v1.0.0               # Create version tag
+git push origin v1.0.0       # Push tag to GitHub
+------------------------------------------------------------
+
+
+
+Remote Repos
+------------------------------------------------------------
+git remote -v                		# View connected remotes
+git remote add upstream <url> 		# Add original repo to sync from
+git fetch upstream
+git merge upstream/main
+------------------------------------------------------------
